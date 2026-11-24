@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": "dist",
+    "rootDir": ".",
+    "declaration": false
+  },
+  "include": ["index.ts", "api.ts", "models.ts", "onboard.ts", "types/*.d.ts", "openclaw.plugin.json"]
+}

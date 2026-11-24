@@ -1,0 +1,76 @@
+{
+  "id": "tadly",
+  "categories": ["models"],
+  "name": "Tadly",
+  "description": "OpenClaw provider plugin for Tadly.",
+  "activation": {
+    "onStartup": false
+  },
+  "enabledByDefault": true,
+  "providers": ["tadly"],
+  "providerRequest": {
+    "providers": {
+      "tadly": {
+        "family": "tadly"
+      }
+    }
+  },
+  "setup": {
+    "providers": [
+      {
+        "id": "tadly",
+        "envVars": ["TADLY_API_KEY"]
+      }
+    ]
+  },
+  "providerAuthChoices": [
+    {
+      "provider": "tadly",
+      "method": "api-key",
+      "choiceId": "tadly-api-key",
+      "appGuidedSecret": true,
+      "choiceLabel": "Tadly API key",
+      "choiceHint": "OpenAI-compatible API",
+      "groupId": "tadly",
+      "groupLabel": "Tadly",
+      "groupHint": "OpenAI-compatible API",
+      "optionKey": "tadlyApiKey",
+      "cliFlag": "--tadly-api-key",
+      "cliOption": "--tadly-api-key <key>",
+      "cliDescription": "Tadly API key"
+    }
+  ],
+  "modelCatalog": {
+    "providers": {
+      "tadly": {
+        "baseUrl": "https://api.tadly.dev/v1",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "qwen3.5",
+            "name": "Qwen-3.5",
+            "input": ["text", "image"],
+            "contextWindow": 131072,
+            "maxTokens": 32768,
+            "compat": {
+              "supportsStore": false,
+              "supportsDeveloperRole": false,
+              "supportsReasoningEffort": false,
+              "supportsUsageInStreaming": false,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false
+            }
+          }
+        ]
+      }
+    },
+    "discovery": {
+      "tadly": "refreshable"
+    }
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {}
+  }
+}

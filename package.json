@@ -1,0 +1,55 @@
+{
+  "name": "@tadlyai/openclaw-tadly",
+  "version": "0.1.0",
+  "description": "OpenClaw provider plugin for Tadly.",
+  "license": "MIT",
+  "homepage": "https://tadly.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tadlyai/openclaw-tadly.git"
+  },
+  "type": "module",
+  "files": [
+    "dist",
+    "openclaw.plugin.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:live": "TADLY_LIVE_TEST=1 vitest run tadly.live.test.ts",
+    "prepack": "npm run build"
+  },
+  "peerDependencies": {
+    "openclaw": ">=2026.11.8"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "openclaw": "2026.11.8",
+    "typescript": "7.0.2",
+    "vitest": "5.1.1"
+  },
+  "openclaw": {
+    "extensions": [
+      "./dist/index.js"
+    ],
+    "providers": [
+      "tadly"
+    ],
+    "install": {
+      "clawhubSpec": "clawhub:@tadlyai/openclaw-tadly",
+      "npmSpec": "@tadlyai/openclaw-tadly",
+      "minHostVersion": ">=2026.11.8"
+    },
+    "compat": {
+      "pluginApi": ">=2026.11.8",
+      "minGatewayVersion": "2026.11.8"
+    },
+    "build": {
+      "openclawVersion": "2026.11.8",
+      "pluginSdkVersion": "2026.11.8"
+    }
+  }
+}
